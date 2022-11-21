@@ -1,0 +1,25 @@
+.container{
+  width: 100%;
+  height: 100vh;
+  background-color: gray;
+  position: relative;
+  overflow: hidden;
+}
+.circle{
+  width: 20px;
+  height: 20px;
+  background: blue;
+  color:white;
+  border-radius: 50%;
+  position: absolute;
+}
+.btnWrapper{
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.btnWrapper > button{
+  padding: 10px;
+}
