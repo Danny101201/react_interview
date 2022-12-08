@@ -119,7 +119,7 @@ function howManyEmployeeByTime(time) {
   let timeForEmployeeTypes = formattedType.filter(type => {
     return (formattedTime >= type.startNumber) && (formattedTime <= type.endNumber)
   }).map(item => item.type)
-  console.log(timeForEmployeeTypes)
+  console.log({ timeForEmployeeTypes })
   return employees.reduce((acc, current) => {
     if (timeForEmployeeTypes.includes(current.type)) {
       acc += 1
@@ -127,7 +127,6 @@ function howManyEmployeeByTime(time) {
     return acc
   }, 0)
 }
-console.log(howManyEmployeeByTime(new Date(new Date().setHours(13))))
 // 4. Count total hours worked in 1 toDay ? // => 39
 //   5. Make a function that take as parameters dayTime and return number of employee working // howManyEmployeeByTime(time) => int
 
@@ -138,4 +137,7 @@ function getTaksOfDays() {
   console.log(totalTime)
 }
 getTaksOfDays()
+
+console.log(howManyEmployeeByTime(new Date(new Date().setHours(13))))
+
 // 6. How many days of work needed to done all tasks ? // => 1 toDay = 9:00 to 00:00 between 00:00 and 09:00 doesnt count.
