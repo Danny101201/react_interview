@@ -32,5 +32,7 @@ function formatTimeAgo(date) {
     duration /= division.amount
   }
 }
-
 console.log(formatTimeAgo(new Date().setMonth(10)))
+
+
+
