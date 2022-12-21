@@ -16,7 +16,7 @@ const DIVISIONS = [
   { amount: 12, name: 'months' },
   { amount: Number.POSITIVE_INFINITY, name: 'years' }
 ]
-let TwoDayAgo = english.format(10, 'year')
+let TwoDayAgo = english.format(10, 'day')
 console.log(TwoDayAgo)
 // create an sample function
 const formatter = new Intl.RelativeTimeFormat(undefined, {
@@ -32,7 +32,7 @@ function formatTimeAgo(date) {
     duration /= division.amount
   }
 }
-console.log(formatTimeAgo(new Date().setMonth(10)))
+console.log(formatTimeAgo(new Date().setDate(11)))
 
 
 
