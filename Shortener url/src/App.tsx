@@ -4,9 +4,12 @@ import UrlInput from './components/UrlInput.component';
 import BackGround_Animated from './components/BackGround_Animated.component';
 import InputResult from './components/InputResult.component';
 import axios, { AxiosError } from 'axios'
+import { toggleFullScreens } from './utils/fullScreen';
+
 function App() {
   const [shortUrl, setShortUrl] = useState<string>('')
   const [isLoading, setLoading] = useState<boolean>(false)
+  const [isFullScreen, setIsFullScreen] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
   const fetchData = async (url: string) => {
     try {
@@ -32,6 +35,7 @@ function App() {
         <UrlInput shortenUrl={shortenUrl} />
         <BackGround_Animated />
         <InputResult shortUrl={shortUrl} isLoading={isLoading} error={error} />
+        <button onClick={() => toggleFullScreens(isFullScreen, setIsFullScreen)} >{isFullScreen?'close':'open'} fullScreen</button>
       </div>
     </>
   )
