@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { useAPI } from './hooks/useApi'
+import { useRandomTimeOut } from './hooks/useRandomTimeOut'
 
 function App() {
   const [count, setCount] = useState(0)
   const { client, getRouters } = useAPI();
+  const [date, setDate] = useState(Date.now)
+  useRandomTimeOut({ callBack: () => { setDate(Date.now) }, minDelay: 500, maxDelay: 1000 })
   useEffect(() => {
     client.get(getRouters('/comments'))
       .then(res => res.data)
@@ -13,6 +16,7 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <p>It is currently {new Date(date).toString()}.</p>;
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
