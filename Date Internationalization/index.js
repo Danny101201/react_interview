@@ -1,6 +1,6 @@
 const english = new Intl.RelativeTimeFormat('en-us', {
   style: 'long',
-  numeric: 'always'
+  numeric: 'auto'
 })
 const spanish = new Intl.RelativeTimeFormat('en-es', {
   style: 'narrow'
@@ -16,8 +16,8 @@ const DIVISIONS = [
   { amount: 12, name: 'months' },
   { amount: Number.POSITIVE_INFINITY, name: 'years' }
 ]
-let TwoDayAgo = english.format(10, 'day')
-console.log(TwoDayAgo)
+let TwoDayAgo = english.format(10, 'hours')
+
 // create an sample function
 const formatter = new Intl.RelativeTimeFormat(undefined, {
   numeric: 'auto'
@@ -32,7 +32,7 @@ function formatTimeAgo(date) {
     duration /= division.amount
   }
 }
-console.log(formatTimeAgo(new Date().setDate(11)))
+console.log(formatTimeAgo(new Date().setFullYear(2025)))
 
 
 
