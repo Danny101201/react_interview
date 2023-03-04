@@ -7,3 +7,18 @@ let Green = 'Green' as string
 
 const blue = 'blue' satisfies Color
 const result = blue.endsWith('bl')
+
+interface User {
+  name: string
+}
+interface Info {
+  users: User[]
+}
+
+function getInfo(info: Info) {
+
+  console.log(info.users[0].name)
+
+}
+
+const info: Info = { users: [] }
