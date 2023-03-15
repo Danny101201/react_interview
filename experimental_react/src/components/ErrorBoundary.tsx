@@ -36,3 +36,30 @@ export default class ErrorBoundary extends Component<Props, State> {
   }
 }
 
+
+
+class ErrorBoundaryMySel extends Component<Props, State> {
+  constructor(prop: Props) {
+    super(prop)
+    this.state = {
+      hasError: false,
+      error: null
+    }
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { error, hasError: true }
+  }
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    console.log('Errpr :' + error.message, 'Error Info:', errorInfo)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        
+        this.props.fallback(this.state.error?.message!)
+      )
+    }
+    return this.props.children
+  }
+}
