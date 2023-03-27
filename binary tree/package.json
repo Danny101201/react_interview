@@ -1,11 +1,13 @@
 {
-  "name": "folder_structure",
+  "name": "binary-tree",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build_stage": "vite build --mode staging --outDir dist",
+    "build_test": "vite build --mode testing --outDir dist_test",
     "preview": "vite preview"
   },
   "dependencies": {

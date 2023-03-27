@@ -15,6 +15,19 @@ function mustFind<T>(arr: T[], predicate: (t: T) => boolean) {
   throw new Error('item not find')
 }
 
+
+function problemGetMemberById(memberId: string): Team {
+  const Members: Member[] = [
+    { id: '1', name: 'Danny' },
+    { id: '2', name: 'Alex' },
+    { id: '3', name: 'Blob' },
+  ]
+  return {
+    name: 'My_team',
+    members: Members,
+    currentMember: Members.find(item => item.id === memberId)
+  }
+}
 function getMemberById(memberId: string): Team {
   const Members: Member[] = [
     { id: '1', name: 'Danny' },

@@ -1,71 +1,30 @@
-import { Children, useState } from 'react'
-
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
-type TEntry = {
-  name: string
-  children?: TEntry[],
-}
-const folder = {
-  children: [
-    {
-      name: 'vite.config.ts'
-    },
-    {
-      name: 'src',
-      children: [{
-        name: 'vite-env.d.ts'
-      }]
-    },
-    {
-      name: 'main.tsx',
-      children: [{
-        name: 'vite-env.d.ts',
-        children: [{
-          name: 'vite-env.d.ts'
-        }]
-      }]
-    },
-    {
-      name: 'package.json'
-    },
-  ]
-}
+import Folder from './components/Folder'
 
-function Entry({ entry, depth }: { entry: TEntry, depth: number }) {
-  const [openFolder, setOpenFolder] = useState(false)
-  return (
-    <>
-      {entry.children ? (
-        <div
-          style={{ paddingLeft: `${depth * 20}px` }}
-          className="text-2xl py-2 cursor-pointer"
-          onClick={() => setOpenFolder(!openFolder)}
-        >
-          {openFolder ? '-' : '+'}
-          {entry.name}
-        </div>
-      ) : (
-        <div
-          className="text-2xl py-2 cursor-pointer"
-          style={{ paddingLeft: `${depth * 20}px` }}
-        >{entry.name}</div>
-      )}
-      {
-        openFolder && (entry.children?.map((item, index) => (
-          <Entry key={index} entry={item} depth={depth + 1} />
-        )))
-      }
-    </>
+if (import.meta.hot) {
+  import.meta.hot.accept('./components/Folder.tsx', (newFoo) => {
+    console.log('accept')
+    // 回调函数接收到更新后的'./foo.js' 模块
+    newFoo?.foo()
+  })
+
+  // 也可以接受一个依赖模块的数组：
+  import.meta.hot.accept(
+    ['./foo.js', './bar.js'],
+    ([newFooModule, newBarModule]) => {
+      // 只有当所更新的模块非空时，回调函数接收一个数组
+      // 如果更新不成功（例如语法错误），则该数组为空
+    }
   )
 }
 function App() {
+
   return (
-    <div className='wrapper'>
-      <div>
-        {folder.children.map((item, index) => (
-          <Entry key={index} entry={item} depth={0} />
-        ))}
-      </div>
+    <div className="App">
+      <Folder />
     </div>
   )
 }
