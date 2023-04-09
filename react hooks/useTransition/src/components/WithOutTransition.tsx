@@ -1,22 +1,25 @@
-import { useState, ChangeEvent, useEffect } from 'react'
+import React, { useState } from 'react'
+const listCounts = 20000
 function WithOutTransition() {
   const [value, setValue] = useState('')
   const [lists, setLists] = useState<string[]>([])
+  console.log('render')
 
-
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value)
-    const L = []
-    for (let i = 0; i < 10000; i++) {
-      L.push(e.target.value)
+    const list = []
+    for (let i = 0; i <= listCounts; i++) {
+      list.push(e.target.value)
     }
-    setLists(L)
+    setLists(list)
+
   }
+
   return (
-    <div className="App">
+    <div>
       <input type="text" value={value} onChange={handleChangeInput} />
-      {lists.map((l, i) => (
-        <div key={i}>{l}</div>
+      {lists.map((item, i) => (
+        <p key={i}>{item}</p>
       ))}
     </div>
   )

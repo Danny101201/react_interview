@@ -1,0 +1,12 @@
+.box{
+  width: 100px;
+  height: 100px;
+  background-color: blue;
+}
+
+@media (300px<=width<=500px) or (orientation: landscape) {
+  .box{
+     background-color: red;
+  }
+  
+}

@@ -8,10 +8,13 @@ interface Person {
   }
 }
 
-function hasAddress(person: Person): person is Person & { address: object } {
+// function hasAddress(person: Person): person is Person & { address: object } {
+//   return person.address !== undefined
+// }
+//檢查person是否有address type，透過type guard我們可以改變person型別，本欄address的型別是optional現在是有address
+function hasAddress(person: Person): person is (Person & { address: object }) {
   return person.address !== undefined
 }
-
 
 function getAddress(person: Person): string {
   if (hasAddress(person)) {
