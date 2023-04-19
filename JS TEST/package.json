@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/node": "^18.14.6"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

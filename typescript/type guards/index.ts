@@ -54,6 +54,7 @@ function area(shape: Shapes): number {
   }
 }
 
+
 //require age type
 interface Persons {
   name: string;

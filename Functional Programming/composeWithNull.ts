@@ -1,5 +1,3 @@
-import { findSourceMap } from "module"
-
 type DiveTwo = (x: number) => number
 type Increment = (x: number) => number
 const increment: Increment = (x) => x + 1
@@ -29,7 +27,7 @@ const none: None = { _tag: 'None' }
 const isNone = <A>(x: Option<A>): x is None => x._tag === 'None'
 
 type DivideTwo2 = (x: number) => Option<number>
-const divideTwo2: DivideTwo2 = (x) => x === 0 ? none : some(diveTwo(x))
+const divideTwo2: DivideTwo2 = (x: number) => x === 0 ? none : some(diveTwo(x))
 
 type Increment2 = (x: Option<number>) => Option<number>
 const increment2: Increment2 = (x) => isNone(x) ? none : some(increment(x.value))

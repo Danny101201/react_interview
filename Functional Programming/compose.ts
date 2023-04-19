@@ -10,6 +10,7 @@ const mustHave = <T>(arry: T[], predicate: (item: T) => boolean) => {
   // if (WHOLE_CHICKEN.includes(part)) { }
 
 }
+
 const grab = (part: ChickenTYpe[number], chicken: ChickenTYpe): ChickenTYpe[number] => {
 
   const findChickenPart = mustHave(chicken, (item) => item === part)
