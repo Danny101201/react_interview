@@ -14,4 +14,5 @@ declare global {
   }
 }
 
-export const your_env_here = envVariable.parse(process.env)
+const your_env_here = envVariable.parse(process.env)
+console.log(your_env_here)
