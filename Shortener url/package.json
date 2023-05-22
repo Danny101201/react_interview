@@ -1,11 +1,11 @@
 {
   "name": "shortener-url",
   "private": true,
-  "version": "0.0.0",
+  "version": "2023.05.13",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build --debug",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -22,6 +22,7 @@
     "postcss": "^8.4.19",
     "tailwindcss": "^3.2.4",
     "typescript": "^4.6.4",
-    "vite": "^3.2.3"
+    "vite": "^3.2.3",
+    "vite-plugin-build-time": "^0.0.3"
   }
 }
