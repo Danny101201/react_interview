@@ -38,3 +38,23 @@ const handler = {
     }
   },
 };
+
+
+interface Fizz {
+  id: number;
+  fizz: string;
+}
+interface Buzz {
+  id: number;
+  buzz: string;
+}
+function isBuzz(value: unknown[]): value is Buzz[] {
+  return (value as Buzz[]).every((item) => item.buzz)
+}
+function fn(arr: Fizz[] | Buzz[]) {
+  if (isBuzz(arr)) {
+    return arr.filter(item => item.buzz === 'sss')
+  } else {
+    return arr.filter(item => item.fizz === 'sss')
+  }
+}
