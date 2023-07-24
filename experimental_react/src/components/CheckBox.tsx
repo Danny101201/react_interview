@@ -1,13 +1,14 @@
 import React, { useId } from 'react'
-import { Url } from '../App'
+import { Url } from './Demo2'
+
 
 interface CheckBoxProps {
   isCheck: boolean,
-  value: Url,
+  value: Url | string,
   label: string,
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }
-export function CheckBox({ isCheck, label, value, onChange }: CheckBoxProps) {
+export const CheckBox = ({ isCheck, label, value, onChange }: CheckBoxProps) => {
   const checkBoxId = useId()
   return (
     <div>

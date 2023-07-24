@@ -1,0 +1,6 @@
+#V2
+--help
+INFO DB
+CREATE account SET\n	name = 'ACME Inc',\n	created_at = time::now()\n;
+SELECT * FROM account;
+SELECT * FROM account --pretty;

@@ -1,0 +1,1 @@
+type NameFnTuplesArgsType = (...args: [name: string, age: number]) => void // (name: string, age: number) => void

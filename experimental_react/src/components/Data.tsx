@@ -1,24 +1,29 @@
 import React, { use } from 'react'
 
 
-interface Post {
-  postId: number;
-  id: number;
-  name: string;
-  email: string;
-  body: string;
+interface DataProps {
+  url: string,
+  shouldFetch: boolean
+  hasError: boolean
 }
 
 const getData = (url: string) => fetch(url)
   .then(res => res.json())
-  
-function Data({ url }: { url: string }) {
-  //data will not be undefined ,because use will be trigger before react render
-  const data = use<Post[]>(getData(url))
+
+function Data({ url, shouldFetch, hasError }: DataProps) {
+  let data = 'default data'
+
+  if (shouldFetch) {
+    data = use(getData(url))
+  }
+  if (hasError) {
+    throw new Error('hasError')
+  }
+
   return (
-    <div>{
-      JSON.stringify(data, null, 2)}
-    </div>
+    <pre>
+      {JSON.stringify(data, null, 2)}
+    </pre>
   )
 }
 

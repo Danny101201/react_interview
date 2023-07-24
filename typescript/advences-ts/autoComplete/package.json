@@ -1,0 +1,13 @@
+{
+  "name": "autoComplete",
+  "version": "1.0.0",
+  "decription": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Danny Wu <hiunji64@gmail.com>",
+  "license": "MIT",
+  "deploy": "Netlify",
+  "dependencies": {
+    "react": "^18.2.0"
+  }
+}

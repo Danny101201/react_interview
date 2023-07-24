@@ -26,8 +26,8 @@ interface Comment {
 function App() {
   return (
     <div >
-      <WithOutTransition />
-      {/* <WithTransition /> */}
+      {/* <WithOutTransition /> */}
+      <WithTransition />
     </div>
   )
 }

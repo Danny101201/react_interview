@@ -1,4 +1,4 @@
-import React, { Component, ReactNode, ErrorInfo } from 'react'
+import React, { Component, ReactNode, ErrorInfo, PropsWithChildren } from 'react'
 
 interface Props {
   children: ReactNode;
@@ -38,28 +38,26 @@ export default class ErrorBoundary extends Component<Props, State> {
 
 
 
-class ErrorBoundaryMySel extends Component<Props, State> {
-  constructor(prop: Props) {
-    super(prop)
+export class ErrorBoundaryMySel extends Component<Props, State>{
+  constructor(props: Props) {
+    super(props)
     this.state = {
       hasError: false,
       error: null
     }
   }
-  static getDerivedStateFromError(error: Error) {
-    return { error, hasError: true }
-  }
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
-    console.log('Errpr :' + error.message, 'Error Info:', errorInfo)
+  static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error }
   }
 
-  render() {
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo): void {
+    console.error('Error:', error, 'Error Info:', errorInfo);
+  }
+  render(): React.ReactNode {
     if (this.state.hasError) {
-      return (
-        
-        this.props.fallback(this.state.error?.message!)
-      )
+      return this.props.fallback(this.state.error?.message!)
     }
     return this.props.children
   }
+
 }
