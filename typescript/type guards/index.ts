@@ -42,7 +42,6 @@ interface Rectangle {
 
 type Shapes = Circle | Square | Rectangle;
 
-
 function area(shape: Shapes): number {
   switch (shape.kind) {
     case "circle":

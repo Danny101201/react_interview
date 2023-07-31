@@ -43,6 +43,11 @@ const retry = async <Tdata,>(promise: () => Promise<Tdata>, onRetry: () => void,
         console.warn("Max retries reached. Bubbling the error up");
         throw e
       }
+
+      // this will not throw error 
+      // if(0){
+      //   throw e
+      // }
     }
   }
 

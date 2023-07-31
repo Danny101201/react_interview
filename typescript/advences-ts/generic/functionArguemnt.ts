@@ -9,7 +9,11 @@ type EventFun =
     type: "Logout";
   }
 
-
+const sendEventAfter2 = <Type extends EventFun['type']>(
+  ...args: Extract<EventFun, { type: Type }> extends { payload: infer Payload }
+    ? [type: Type, payload: Payload]
+    : [type: Type]
+) => { }
 const sendEventBefore = (eventType: EventFun['type'], payload?: any) => { }
 const sendEventAfter = <Type extends EventFun['type']>(
   ...args: Extract<EventFun, { type: Type }> extends { payload: infer TPayload }
