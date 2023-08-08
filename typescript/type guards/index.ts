@@ -7,7 +7,15 @@ interface Person {
     state: string;
   }
 }
-
+const person: Person = {
+  name: 'danny',
+  age: 22,
+  // address: {
+  //   street: 'street',
+  //   city: 'city',
+  //   state: 'state'
+  // }
+}
 // function hasAddress(person: Person): person is Person & { address: object } {
 //   return person.address !== undefined
 // }
@@ -15,6 +23,7 @@ interface Person {
 function hasAddress(person: Person): person is (Person & { address: object }) {
   return person.address !== undefined
 }
+hasAddress(person)
 
 function getAddress(person: Person): string {
   if (hasAddress(person)) {
@@ -92,3 +101,29 @@ type Objperson = {
 }
 
 type ObjpersonPartial = Partial<Objperson>
+
+
+
+type Post = {
+  type: 'post',
+  postInfo: {
+    name: string,
+  }
+}
+type Comments = {
+  type: 'comments',
+  commentInfo: {
+    name: string,
+  }
+}
+
+
+let input: (Post | Comments) = { type: 'post', postInfo: { name: 'post-1' } }
+let treatTypescript = (input: (Post | Comments)): input is Comments => {
+  return input.type === 'post'
+}
+const main = (input: (Post | Comments)) => {
+  if (treatTypescript(input)) {
+    console.log(input.commentInfo)
+  }
+}
