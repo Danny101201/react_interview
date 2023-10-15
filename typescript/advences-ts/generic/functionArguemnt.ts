@@ -19,8 +19,13 @@ const sendEventAfter = <Type extends EventFun['type']>(
   ...args: Extract<EventFun, { type: Type }> extends { payload: infer TPayload }
     ? [type: Type, payload: TPayload]
     : [type: Type]
-) => { }
-
+) => {
+  const [eventType] = args
+  if (eventType === 'Login') {
+    const payload = args[1]
+    console.log(payload)
+  }
+}
 sendEventBefore("Login", {
   userId: '1'
 })
@@ -54,3 +59,41 @@ const Button = <TType extends ButtonType['type']>(
 Button('hidden', true)
 Button('show')
 
+
+type EventType = {
+  type: 'login'
+} | {
+  type: 'logout',
+  payload: {
+    name: string
+  }
+}
+
+const shopEvent = <Event extends EventType['type']>(
+  ...args: Extract<EventType, { type: Event }> extends { payload: infer PayloadType }
+    ? [type: Event, payload: PayloadType]
+    : [type: Event]
+) => {
+  const [type, payload] = args
+}
+shopEvent('logout', { name: 'string' })
+
+
+type EventTYpe = {
+  type: 'A'
+} | {
+  type: 'B',
+  payload: {
+    info: string
+  }
+}
+
+const sendEventTYpe = <Event2 extends EventTYpe['type']>(
+  ...arg: Extract<EventTYpe, { type: Event2 }> extends { payload: infer Tplayoad } ? [type: Event2, payload: Tplayoad] : [type: Event2]
+) => {
+
+}
+
+sendEventTYpe('B', {
+  info: '111'
+})
