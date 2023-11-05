@@ -51,7 +51,23 @@ Promise.any([promise2, promise3])
     console.log('some error (Promise.any)')
   })
 
-  //  promise.all ： 用處在你希望所有 promise 都是resolve 才會傳結果，只要其中一個reject 全部都fail
-  //  promise.allSettled ： 你不希望其他 promise 被互相影響導致 failed， 並希望彼此都是獨立的狀況， allSettled 會 return 各自的 status 跟 data 並且使用 allSettled 並不會去觸發 catch 得 callback function
-  // promise.race : 你希望只回傳第一個 resolve 或 reject 的 promise ，如果所有 promise 都 error 才會去觸發 cache 的 callback function
-  // promise.any : 你希望只回傳第一個 resolve  的 promise ，如果所有 promise 都 error 才會去觸發 cache 的 callback function
+//  promise.all ： 用處在你希望所有 promise 都是resolve 才會傳結果，只要其中一個reject 全部都fail
+//  promise.allSettled ： 你不希望其他 promise 被互相影響導致 failed， 並希望彼此都是獨立的狀況， allSettled 會 return 各自的 status 跟 data 並且使用 allSettled 並不會去觸發 catch 得 callback function
+// promise.race : 你希望只回傳第一個 resolve 或 reject 的 promise ，如果所有 promise 都 error 才會去觸發 cache 的 callback function
+// promise.any : 你希望只回傳第一個 resolve  的 promise ，如果所有 promise 都 error 才會去觸發 cache 的 callback function
+
+
+const aaafetch = async () => {
+  const abort = new AbortController()
+  try {
+
+    await Promise.race([
+      fetch('/aa', { signal: abort.signal }),
+      fetch('/cc', { signal: abort.signal }),
+      fetch('/dd', { signal: abort.signal }),
+      new Promise((_, r) => setTimeout(r, 2000))
+    ])
+  } catch (e) {
+    abort.abort()
+  }
+}
