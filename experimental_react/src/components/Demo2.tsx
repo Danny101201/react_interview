@@ -19,6 +19,7 @@ function Demo() {
   }
   return (
     <div style={{ minHeight: '100vh' }}>
+  
       <div>
         <CheckBox
           label='COMMENT'

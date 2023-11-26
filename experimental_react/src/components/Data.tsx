@@ -1,6 +1,5 @@
 import React, { use } from 'react'
 
-
 interface DataProps {
   url: string,
   shouldFetch: boolean
