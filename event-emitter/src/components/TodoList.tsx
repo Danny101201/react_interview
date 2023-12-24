@@ -6,7 +6,7 @@ import { TodoEntity } from '../types/TodoEntity'
 export const TodoList = () => {
   const [list, setList] = useState<TodoEntity[]>([])
   const { useListener } = useEventEmitter<TodoEvents>()
-  useListener('addTodo', (todo) => setList([...list, ...todo]))
+  useListener('addTodo', (todo) => setList([...list, todo]))
   return (
     < ul >
       {list.map((todo, i) => (

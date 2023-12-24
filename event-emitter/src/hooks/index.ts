@@ -6,7 +6,7 @@ export const useEmit = <Event extends BaseEvent>() => {
   const em = useEmitContext()
   return useCallback(<E extends keyof Event>(type: E, ...args: Event[E]) => {
     console.log('emitter emit: ', type, args)
-    em.emit(type, args)
+    em.emit(type, ...args)
   }, [em])
 }
 
