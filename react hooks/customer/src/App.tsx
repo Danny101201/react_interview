@@ -1,12 +1,22 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
 import { usePreview } from './hooks'
-
+const useIsFirstRender = (callBack: () => void) => {
+  const isFirst = useRef<boolean>(true)
+  if (isFirst.current) {
+    isFirst.current = false
+    callBack()
+    return true
+  } else {
+    return false
+  }
+}
 function App() {
   const [count, setCount] = useState(0)
   const info = usePreview<number>(count)
-  console.log(info)
+  const isFirst = useIsFirstRender(() => console.log('11'))
+  console.log(isFirst)
   return (
     <div className="App">
       <div>
