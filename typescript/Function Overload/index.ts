@@ -40,3 +40,27 @@ function contactPeople(methods: 'phone' | 'email', ...people: (HasPhoneNumber | 
 
 contactPeople('email', { name: 'danny', email: 'hiunji64@gmail.com' })
 contactPeople('phone', { name: 'danny', phone: 0963802367 })
+
+
+
+const default_callBack = '-'
+type Nullable<T> = T | null
+type NullableType = null | undefined | unknown | ''
+type Value = string | number | boolean | any[] | Record<any, any> | null | undefined;
+function formatFallback(value: NullableType): typeof default_callBack
+function formatFallback<Tdata extends Value>(value: Tdata): Tdata
+function formatFallback<Tdata extends Value, E>(value: Tdata, select: (value: Tdata) => E): E
+function formatFallback<Tdata extends Value, E>(value: Tdata, select?: (value: Tdata) => E) {
+  if (value === null || value === undefined) {
+    return default_callBack
+  }
+  if (select) return select(value) as ReturnType<typeof select>
+  return value
+}
+const value = formatFallback(null) // unknown
+const value555 = formatFallback(undefined) // unknown
+const value2 = formatFallback({ a: '11', b: '22' })
+const value3 = formatFallback({ a: '11', b: '22' }, ({ b }) => b) // string
+
+
+
