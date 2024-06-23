@@ -35,3 +35,4 @@ const t23: T2 = {}; // expected error
 // 有時候我們會需要
 type ColumnType = 'unAssign' | 'assign' | (string & {})
 type ColumnType2 = 'unAssign' | 'assign' | Omit<string, 'unAssign' | 'assign'>
+
